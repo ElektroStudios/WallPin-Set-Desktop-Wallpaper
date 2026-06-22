@@ -9,13 +9,13 @@ SET "Exe=%~dp0..\WallPin.exe"
 SET "Icon=%Exe%,0"
 
 :: Define sub-menu items using format "RegistryKeyName|MenuDisplayText|Arguments"
-SET "Item0=0. Default|Default|"
-SET "Item1=1. Center|Center|center"
-SET "Item2=2. Tile|Tile|tile"
-SET "Item3=3. Stretch|Stretch|stretch"
-SET "Item4=4. Fit|Fit|fit"
-SET "Item5=5. Fill|Fill|fill"
-SET "Item6=6. Span|Span|span"
+SET "Item0=0. Default|&Default|"
+SET "Item1=1. Center|&Center|center"
+SET "Item2=2. Tile|&Tile|tile"
+SET "Item3=3. Stretch|&Stretch|stretch"
+SET "Item4=4. Fit|&Fit|fit"
+SET "Item5=5. Fill|F&ill|fill"
+SET "Item6=6. Span|S&pan|span"
 :: ---------------------
 
 FOR %%# IN (%Extensions%) DO (
