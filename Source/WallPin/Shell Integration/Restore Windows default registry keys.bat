@@ -17,5 +17,4 @@ FOR %%# IN (%Extensions%) DO (
 
 ECHO+
 ECHO:DONE!
-PAUSE
 EXIT
