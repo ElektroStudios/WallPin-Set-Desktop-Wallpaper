@@ -3,11 +3,14 @@ Imports System.ComponentModel
 Imports System.IO
 Imports System.Linq
 Imports System.Runtime.InteropServices
+Imports System.Text
 Imports System.Windows.Forms
 
 Imports Microsoft.Win32
 
 Public Module Program
+
+    Private Const WALLPIN_TEMP_FILENAME_PREFIX As String = "wallpin_temp_longpath_wallpaper"
 
     Private ReadOnly SupportedFileExtensions As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase) From {
             ".bmp",
@@ -37,12 +40,16 @@ Public Module Program
 
         ' Parse image filepath.
         Dim filePath As String = args(0)
-        If Not File.Exists(filePath) Then
-            Program.TerminateProcess($"ERROR: The specidied image filepath was not found: ""{filePath}""", exitCode:=3)
+        Dim fullPath As String = Path.GetFullPath(filePath)
+        Dim longFullPath As String = If(fullPath.StartsWith("\\?\"), fullPath, $"\\?\{fullPath}")
+
+        ' Always use the extended kernel path prefix to safely verify existence of any path length
+        If Not File.Exists(longFullPath) Then
+            Program.TerminateProcess($"ERROR: The specified image filepath was not found: ""{fullPath}""", 3)
         End If
 
         ' Validate file extension.
-        Dim fileExtension As String = Path.GetExtension(filePath)
+        Dim fileExtension As String = Path.GetExtension(longFullPath)
         If Not Program.SupportedFileExtensions.Contains(fileExtension, StringComparer.OrdinalIgnoreCase) Then
             Program.TerminateProcess($"ERROR: ""{fileExtension}"" is not a supported file format.", exitCode:=4)
         End If
@@ -77,11 +84,40 @@ Public Module Program
             Program.TerminateProcess(errorMessage, exitCode:=ex.HResult)
         End Try
 
+        ' Determine the target path for the User32 API. 
+        Dim finalWallpaperPath As String = fullPath
+
+        ' Perform a shadow copy if the path length exceeds Windows MAX_PATH.
+        If fullPath.Length >= Win32_Constants.MAX_PATH Then
+
+            Dim tempDir As String = Path.GetTempPath()
+            Try
+                If Not Directory.Exists(tempDir) Then
+                    Directory.CreateDirectory(tempDir)
+                End If
+
+                Dim safeWallpaperPath As String =
+                    Path.Combine(tempDir, $"{Program.WALLPIN_TEMP_FILENAME_PREFIX}{fileExtension}")
+
+                File.Copy(longFullPath, safeWallpaperPath, overwrite:=True)
+                finalWallpaperPath = safeWallpaperPath
+
+            Catch ex As Exception
+                Dim copyErrorMessage As String =
+                    $"ERROR: The image filepath is too long and WallPin failed to create a temporary local copy to apply it." & Environment.NewLine & Environment.NewLine &
+                    $"HRESULT: {ex.HResult}" & Environment.NewLine &
+                    $"Message: {ex.Message}"
+
+                Program.TerminateProcess(copyErrorMessage, ex.HResult)
+            End Try
+        End If
+
         ' Trigger system update to apply the wallpaper.
         Dim lastWin32Error As Integer
         Dim updateResult As Integer =
-            NativeMethods.SystemParametersInfo(Win32_Constants.SPI_SETDESKWALLPAPER, 0, filePath,
+            NativeMethods.SystemParametersInfo(Win32_Constants.SPI_SETDESKWALLPAPER, 0, finalWallpaperPath,
                                                Win32_Constants.SPIF_UPDATEINIFILE Or Win32_Constants.SPIF_SENDCHANGE)
+
         lastWin32Error = Marshal.GetLastWin32Error()
 
         If updateResult = 0 Then

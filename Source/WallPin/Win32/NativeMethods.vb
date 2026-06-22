@@ -9,7 +9,8 @@ Friend Module NativeMethods
     Friend Function SystemParametersInfo(uAction As Integer,
                                          uParam As Integer,
        <MarshalAs(UnmanagedType.LPWStr)> lpvParam As String,
-                                         fuWinIni As Integer) As Integer
+                                         fuWinIni As Integer
+    ) As Integer
     End Function
 
 End Module
