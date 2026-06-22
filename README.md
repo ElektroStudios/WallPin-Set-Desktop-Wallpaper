@@ -53,7 +53,7 @@ If you are working inside a directory with thousands of files and you have an im
 ## 👌 Features
 
 - Supports `center`, `tile`, `stretch`, `fit`, `fill`, and `span` using either their names or standard Windows IDs.
-- Includes a batch-script file to add a clean "Set as desktop background" sub-menu directly into the Windows Explorer right-click menu for supported image files.
+- Includes an optional batch-script file to add a clean "Set as desktop background" sub-menu directly into the Windows Explorer right-click menu for supported image files.
 
 > [!NOTE]
 > Adding these registry keys does not delete or corrupt the original built-in Windows menu commands; it simply overrides them safely. A separate batch-script file is also included to easily remove **WallPin**'s registry keys and restore built-in Windows menu commands back to its original state. 
