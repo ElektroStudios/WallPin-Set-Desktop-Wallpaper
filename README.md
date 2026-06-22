@@ -63,9 +63,9 @@ If you are working inside a directory with thousands of files and you have an im
 
 ## 🖼️ Screenshots
 
-![screenshot](/Images/screenshot1.png)
-
 ![screenshot](/Images/screenshot2.png)
+
+![screenshot](/Images/screenshot1.png)
 
 ## 📝 Requirements
 
