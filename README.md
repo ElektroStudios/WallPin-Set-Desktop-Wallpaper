@@ -69,6 +69,7 @@ If you are working inside a directory with thousands of files and you have an im
 ## 🖼️ Screenshots
 
 ![screenshot](/Images/screenshot2.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FElektroStudios%2FWallPin-Set-Desktop-Wallpaper.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FElektroStudios%2FWallPin-Set-Desktop-Wallpaper?ref=badge_shield)
 
 ![screenshot](/Images/screenshot1.png)
 
@@ -114,3 +115,7 @@ This work is distributed for educational purposes and without any profit motive.
 <br></br>
 
 <h2 align="center"><u>Your support means the world to me! Thank you for considering it!</u> 👍</h2>
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FElektroStudios%2FWallPin-Set-Desktop-Wallpaper.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FElektroStudios%2FWallPin-Set-Desktop-Wallpaper?ref=badge_large)
