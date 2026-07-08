@@ -43,6 +43,35 @@ windows-10
 
 ------------------
 
+<p align="center">
+    <a href="https://github.com/ElektroStudios/WallPin-Set-Desktop-Wallpaper/network/members"><img src="https://img.shields.io/github/forks/ElektroStudios/WallPin-Set-Desktop-Wallpaper.svg?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg%3D%3D&label=%F0%9F%8D%B4%20Forks" alt="Forks"></a>&nbsp;
+    <a href="https://github.com/ElektroStudios/WallPin-Set-Desktop-Wallpaper/graphs/contributors"><img src="https://img.shields.io/github/contributors/ElektroStudios/WallPin-Set-Desktop-Wallpaper.svg?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg%3D%3D&label=%F0%9F%91%A5%20Contributors" alt="Contributors"></a>&nbsp;
+    <a href="https://github.com/ElektroStudios"><img src="https://img.shields.io/github/followers/ElektroStudios.svg?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg%3D%3D&label=%F0%9F%91%A4%20Followers" alt="Followers"></a>&nbsp;
+    <a href="https://github.com/ElektroStudios/WallPin-Set-Desktop-Wallpaper/watchers"><img src="https://img.shields.io/github/watchers/ElektroStudios/WallPin-Set-Desktop-Wallpaper.svg?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg%3D%3D&label=%F0%9F%91%80%20Watchers" alt="Watchers"></a>
+    <a href="https://github.com/sponsors/ElektroStudios"><img src="https://img.shields.io/github/sponsors/ElektroStudios.svg?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg%3D%3D&label=%F0%9F%92%96%20Sponsors" alt="Sponsors"></a>&nbsp;
+    <a href="https://github.com/ElektroStudios/WallPin-Set-Desktop-Wallpaper/stargazers"><img src="https://img.shields.io/github/stars/ElektroStudios/WallPin-Set-Desktop-Wallpaper.svg?style=social&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg%3D%3D&label=%E2%AD%90%20Stars" alt="Stars"></a>
+  <br>
+  <br>
+    <a href="https://ci.appveyor.com/project/ElektroStudios/WallPin-Set-Desktop-Wallpaper"><img src="https://ci.appveyor.com/api/projects/status/github/ElektroStudios/WallPin-Set-Desktop-Wallpaper?svg=true" alt="AppVeyor CI"></a>
+    <a href="https://sonarcloud.io/summary/new_code?id=ElektroStudios_WallPin-Set-Desktop-Wallpaper"><img src="https://sonarcloud.io/api/project_badges/measure?project=ElektroStudios_WallPin-Set-Desktop-Wallpaper&metric=alert_status" alt="SonarCloud Quality Gate"></a>
+    <a href="https://github.com/ElektroStudios/WallPin-Set-Desktop-Wallpaper/releases/latest"><img src="https://img.shields.io/github/v/release/ElektroStudios/WallPin-Set-Desktop-Wallpaper" alt="Latest Release"></a>
+    <a href="https://learn.microsoft.com/en-us/dotnet/visual-basic/"><img src="https://img.shields.io/badge/language-VB.NET-purple.svg?logo=visualbasic" alt="Language"></a>
+    <a href="https://learn.microsoft.com/en-us/windows/apps/"><img src="https://img.shields.io/badge/platform-Windows-lightgray.svg" alt="Platform"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/ElektroStudios/WallPin-Set-Desktop-Wallpaper" alt="License"></a>
+  <br>
+    <a href="https://api.github.com/repos/ElektroStudios/WallPin-Set-Desktop-Wallpaper/zipball"><img src="https://img.shields.io/github/repo-size/ElektroStudios/WallPin-Set-Desktop-Wallpaper" alt="Repo size"></a>
+    <a href="https://somsubhra.github.io/github-release-stats/?username=ElektroStudios&repository=WallPin-Set-Desktop-Wallpaper"><img src="https://img.shields.io/github/downloads/ElektroStudios/WallPin-Set-Desktop-Wallpaper/total.svg?label=total%20downloads" alt="Total Downloads"></a>
+    <a href="https://github.com/ElektroStudios/WallPin-Set-Desktop-Wallpaper/commits"><img src="https://img.shields.io/github/last-commit/ElektroStudios/WallPin-Set-Desktop-Wallpaper" alt="Last commit"></a>
+    <a href="https://github.com/ElektroStudios/WallPin-Set-Desktop-Wallpaper/pulls"><img src="https://img.shields.io/github/issues-pr/ElektroStudios/WallPin-Set-Desktop-Wallpaper" alt="Pull Requests"></a>
+    <a href="https://github.com/ElektroStudios/WallPin-Set-Desktop-Wallpaper/issues?q=is%3Aissue+is%3Aopen"><img src="https://img.shields.io/github/issues/ElektroStudios/WallPin-Set-Desktop-Wallpaper?color=blue" alt="Open Issues"></a><a href="https://github.com/ElektroStudios/WallPin-Set-Desktop-Wallpaper/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed/ElektroStudios/WallPin-Set-Desktop-Wallpaper?label=&color=28a745" alt="Closed Issues"></a>
+    <a href="https://github.com/ElektroStudios/WallPin-Set-Desktop-Wallpaper/pulse"><img src="https://img.shields.io/badge/maintained-yes-green.svg" alt="Maintenance"></a>
+  <br>
+  <br>
+    <a href="https://en.wikipedia.org/wiki/Spanish_Empire"><img src="https://img.shields.io/badge/Made_in-Spain_%F0%9F%87%AA%F0%9F%87%B8-AA151B?style=flat" alt="Made in Spain"></a>
+</p>
+
+------------------
+
 ## 👋 Introduction
 
 **WallPin** lets you set any supported image as your Windows desktop wallpaper. It doesn't run in the background, it doesn't consume resources, and it works completely silently without even showing a console window. If an operation fails or the arguments are invalid, the tool will display a standard Windows message box showing the exact error details.
