@@ -33,7 +33,7 @@ windows-10
  -->
 
 <div align="center">
-  <img src="/Images/App.ico" width="80" alt="WallPin Logo">
+  <img src="/Images/App.ico" width="100" alt="WallPin Logo">
   
   <h1>WallPin</h1>
 
