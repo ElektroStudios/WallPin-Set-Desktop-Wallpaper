@@ -1,4 +1,4 @@
-# WallPin Change Log 📋
+﻿# WallPin Change Log 📋
 
 ## v1.0 🔄
 Initial Release.
