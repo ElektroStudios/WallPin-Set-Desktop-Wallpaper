@@ -84,6 +84,12 @@ If you are working inside a directory with thousands of files and you have an im
 
 **WallPin** solves both issues. It updates your desktop wallpaper instantly without affecting your open File Explorer windows, leaving your selection and scrollbars exactly where they are, and gives you full control over the wallpaper layout style.
 
+## 🖼️ Screenshots
+
+![screenshot](/Images/screenshot2.png)
+
+![screenshot](/Images/screenshot1.png)
+
 ## 🤖 Features
 
 - Supports `center`, `tile`, `stretch`, `fit`, `fill`, and `span` using either their names or standard Windows IDs.
@@ -94,12 +100,6 @@ If you are working inside a directory with thousands of files and you have an im
 
 > [!IMPORTANT]
 > However, this software is provided "as-is", without any warranties. I take no responsibility for any registry issues caused by the use or misuse of this tool. Use it at your own risk.
-
-## 🖼️ Screenshots
-
-![screenshot](/Images/screenshot2.png)
-
-![screenshot](/Images/screenshot1.png)
 
 ## 📝 Requirements
 
