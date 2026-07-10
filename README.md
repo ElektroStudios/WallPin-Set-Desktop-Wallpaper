@@ -140,6 +140,20 @@ This work is distributed for educational purposes and without any profit motive.
   <b>Your support means the world to me! Thank you for considering it! 🤗💗</b>
 </div>
 
+
+| Platform | How to Support |
+| :---: | :--- |
+| [![GitHub Sponsors](https://img.shields.io/badge/Sponsor-EA4AAA?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sponsors/ElektroStudios/) | **[Become my sponsor on GitHub](https://github.com/sponsors/ElektroStudios/)**<br>You can show me your support by contributing any amount you prefer, and unlocking rewards! |
+| [![Ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/elektrostudios) | **[Support me on Ko-fi](https://ko-fi.com/elektrostudios)**<br>Buy me a coffee! |
+| [![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/elektrostudios) | **[Become a Patron on Patreon](https://www.patreon.com/elektrostudios)**<br>Support my open-source work regularly! |
+| [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY) | **[Make a PayPal Donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)**<br>Donate any amount you like via PayPal. |
+| [![CodeCanyon](https://img.shields.io/badge/CodeCanyon-81B441?style=for-the-badge&logo=envato&logoColor=white)](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282) | **[Purchase my software at Envato's CodeCanyon](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)**<br>If you are a .NET developer, you may want to explore **DevCase Class Library for .NET**, a huge set of APIs I have on sale. *It also contains all pieces of reusable code that you can find across the source code of my open-source works.* |
+
+<br>
+<div align="center">
+  <b>Your support means the world to me! Thank you for considering it! 🤗💗</b>
+</div>
+
 ------------------
 
 ## ⚠️ Disclaimer
