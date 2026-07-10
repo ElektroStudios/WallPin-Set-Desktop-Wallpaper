@@ -154,6 +154,19 @@ This work is distributed for educational purposes and without any profit motive.
   <b>Your support means the world to me! Thank you for considering it! 🤗💗</b>
 </div>
 
+| Platform | How to Support |
+| :---: | :--- |
+| <a href="https://github.com/sponsors/ElektroStudios/"><img src="https://img.shields.io/badge/GitHub-EA4AAA?style=for-the-badge&logo=github&logoColor=white" width="130" height="32"></a> | **[Become my sponsor on GitHub](https://github.com/sponsors/ElektroStudios/)**<br>You can show me your support by contributing any amount you prefer, and unlocking rewards! |
+| <a href="https://ko-fi.com/elektrostudios"><img src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white" width="130" height="32"></a> | **[Support me on Ko-fi](https://ko-fi.com/elektrostudios)**<br>Buy me a coffee! |
+| <a href="https://www.patreon.com/elektrostudios"><img src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white" width="130" height="32"></a> | **[Become a Patron on Patreon](https://www.patreon.com/elektrostudios)**<br>Support my open-source work regularly! |
+| <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY"><img src="https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white" width="130" height="32"></a> | **[Make a PayPal Donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)**<br>Donate any amount you like via PayPal. |
+| <a href="https://codecanyon.net/item/elektrokit-class-library-for-net/19260282"><img src="https://img.shields.io/badge/Envato-81B441?style=for-the-badge&logo=envato&logoColor=white" width="130" height="32"></a> | **[Purchase my software at Envato's CodeCanyon](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)**<br>If you are a .NET developer, you may want to explore **DevCase Class Library for .NET**, a huge set of APIs I have on sale. *It also contains all pieces of reusable code that you can find across the source code of my open-source works.* |
+
+<br>
+<div align="center">
+  <b>Your support means the world to me! Thank you for considering it! 🤗💗</b>
+</div>
+
 ------------------
 
 ## ⚠️ Disclaimer
