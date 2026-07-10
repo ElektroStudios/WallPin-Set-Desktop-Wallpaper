@@ -130,16 +130,52 @@ This work is distributed for educational purposes and without any profit motive.
 
 | Platform | How to Support |
 | :---: | :--- |
-| <a href="https://github.com/sponsors/ElektroStudios/"><img src="https://img.shields.io/badge/GitHub-EA4AAA?style=for-the-badge&logo=github&logoColor=white"  width="120" height="30"></a> | **[Become my sponsor on GitHub](https://github.com/sponsors/ElektroStudios/)**<br>Contribute any amount you prefer and unlock rewards! |
-| <a href="https://ko-fi.com/elektrostudios"><img src="https://img.shields.io/badge/Ko--fi-29ABE2?style=for-the-badge&logo=ko-fi&logoColor=white"  width="120" height="30"></a> | **[Support me on Ko-fi](https://ko-fi.com/elektrostudios)**<br>Buy me a coffee! |
-| <a href="https://www.patreon.com/elektrostudios"><img src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white"  width="120" height="30"></a> | **[Become a Patron on Patreon](https://www.patreon.com/elektrostudios)**<br>Support my open-source work regularly! |
-| <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY"><img src="https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white"  width="120" height="30"></a> | **[Make a PayPal Donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)**<br>Donate any amount you like via PayPal! |
-| <a href="https://codecanyon.net/item/elektrokit-class-library-for-net/19260282"><img src="https://img.shields.io/badge/Envato-81B441?style=for-the-badge&logo=envato&logoColor=white"  width="120" height="30"></a> | **[Purchase my software at Envato's CodeCanyon](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)**<br>Discover my desktop tools and **DevCase Class Library for .NET**, an extensive API suite. |
+| <a href="https://github.com/sponsors/ElektroStudios/"><img src="https://img.shields.io/badge/GitHub-EA4AAA?style=for-the-badge&logo=github&logoColor=white"  width="120" height="40"></a> | **[Become my sponsor on GitHub](https://github.com/sponsors/ElektroStudios/)**<br>Contribute any amount you prefer and unlock rewards! |
+| <a href="https://ko-fi.com/elektrostudios"><img src="https://img.shields.io/badge/Ko--fi-29ABE2?style=for-the-badge&logo=ko-fi&logoColor=white"  width="120" height="40"></a> | **[Support me on Ko-fi](https://ko-fi.com/elektrostudios)**<br>Buy me a coffee! |
+| <a href="https://www.patreon.com/elektrostudios"><img src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white"  width="120" height="40"></a> | **[Become a Patron on Patreon](https://www.patreon.com/elektrostudios)**<br>Support my open-source work regularly! |
+| <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY"><img src="https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white"  width="120" height="40"></a> | **[Make a PayPal Donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)**<br>Donate any amount you like via PayPal! |
+| <a href="https://codecanyon.net/item/elektrokit-class-library-for-net/19260282"><img src="https://img.shields.io/badge/Envato-81B441?style=for-the-badge&logo=envato&logoColor=white"  width="120" height="40"></a> | **[Purchase my software at Envato's CodeCanyon](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)**<br>Discover my desktop tools and **DevCase Class Library for .NET**, an extensive API suite. |
 
 <br>
 <div align="center">
   <b>Your support means the world to me! Thank you for considering it! 🤗💗</b>
 </div>
+
+
+
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="center" width="160">Platform</th>
+      <th align="left">How to Support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/sponsors/ElektroStudios/"><img src="https://img.shields.io/badge/GitHub-EA4AAA?style=for-the-badge&logo=github&logoColor=white" width="120" height="40"></a></td>
+      <td>**[Become my sponsor on GitHub](https://github.com/sponsors/ElektroStudios/)**<br>Contribute any amount you prefer and unlock rewards!</td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://ko-fi.com/elektrostudios"><img src="https://img.shields.io/badge/Ko--fi-29ABE2?style=for-the-badge&logo=ko-fi&logoColor=white" width="120" height="40"></a></td>
+      <td>**[Support me on Ko-fi](https://ko-fi.com/elektrostudios)**<br>Buy me a coffee!</td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://www.patreon.com/elektrostudios"><img src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white" width="120" height="40"></a></td>
+      <td>**[Become a Patron on Patreon](https://www.patreon.com/elektrostudios)**<br>Support my open-source work regularly!</td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY"><img src="https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white" width="120" height="40"></a></td>
+      <td>**[Make a PayPal Donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)**<br>Donate any amount you like via PayPal!</td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://codecanyon.net/item/elektrokit-class-library-for-net/19260282"><img src="https://img.shields.io/badge/Envato-81B441?style=for-the-badge&logo=envato&logoColor=white" width="120" height="40"></a></td>
+      <td>**[Purchase my software at Envato's CodeCanyon](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)**<br>Discover my desktop tools and **DevCase Class Library for .NET**, an extensive API suite.</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ------------------
 
