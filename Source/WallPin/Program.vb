@@ -3,32 +3,84 @@ Imports System.ComponentModel
 Imports System.IO
 Imports System.Linq
 Imports System.Runtime.InteropServices
-Imports System.Text
 Imports System.Windows.Forms
 
 Imports Microsoft.Win32
 
+Imports Win32
+
+''' <summary>
+''' WallPin: a command-line tool that sets an image file as the active desktop wallpaper,
+''' with support for all the Windows wallpaper layout styles.
+''' </summary>
 Public Module Program
 
+    ''' <summary>
+    ''' The file name prefix (without extension) of the temporary copy of the image
+    ''' that is created when the original file path exceeds <see cref="Win32.Constants.MAX_PATH"/>.
+    ''' </summary>
     Private Const WALLPIN_TEMP_FILENAME_PREFIX As String = "wallpin_temp_longpath_wallpaper"
 
+    ''' <summary>
+    ''' The image file extensions supported by this tool (case-insensitive).
+    ''' </summary>
     Private ReadOnly SupportedFileExtensions As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase) From {
             ".bmp",
             ".gif",
+            ".heic", ".heif",
+            ".jfif",
             ".jpg", ".jpeg",
             ".png",
             ".tif", ".tiff"
     }
 
+    ''' <summary>
+    ''' Maps each accepted wallpaper style identifier (numeric ID or name, case-insensitive)
+    ''' to its corresponding <see cref="WallpaperConfig"/>.
+    ''' <para></para>
+    ''' The numeric IDs match the <c>WallpaperStyle</c> registry value
+    ''' under <c>HKEY_CURRENT_USER\Control Panel\Desktop</c>.
+    ''' <para></para>
+    ''' The "default" identifier maps to <see langword="Nothing"/> on purpose:
+    ''' it means "do not modify the current system wallpaper style".
+    ''' </summary>
     Private ReadOnly StyleMapping As New Dictionary(Of String, WallpaperConfig)(StringComparer.OrdinalIgnoreCase) From {
-            {"0", New WallpaperConfig("0", "0")}, {"center", New WallpaperConfig("0", "0")},
-            {"1", New WallpaperConfig("0", "1")}, {"tile", New WallpaperConfig("0", "1")},
-            {"2", New WallpaperConfig("2", "0")}, {"stretch", New WallpaperConfig("2", "0")},
-            {"6", New WallpaperConfig("6", "0")}, {"fit", New WallpaperConfig("6", "0")},
-            {"10", New WallpaperConfig("10", "0")}, {"fill", New WallpaperConfig("10", "0")},
-            {"22", New WallpaperConfig("22", "0")}, {"span", New WallpaperConfig("22", "0")}
-        }
+        {"default", Nothing},
+        {"0", New WallpaperConfig("0", "0")}, {"center", New WallpaperConfig("0", "0")},
+        {"1", New WallpaperConfig("0", "1")}, {"tile", New WallpaperConfig("0", "1")},
+        {"2", New WallpaperConfig("2", "0")}, {"stretch", New WallpaperConfig("2", "0")},
+        {"6", New WallpaperConfig("6", "0")}, {"fit", New WallpaperConfig("6", "0")},
+        {"10", New WallpaperConfig("10", "0")}, {"fill", New WallpaperConfig("10", "0")},
+        {"22", New WallpaperConfig("22", "0")}, {"span", New WallpaperConfig("22", "0")}
+    }
 
+    ''' <summary>
+    ''' The main application entry point.
+    ''' <para></para>
+    ''' Validates the arguments, stores the wallpaper style in the registry, and applies the wallpaper.
+    ''' </summary>
+    ''' 
+    ''' <remarks>
+    ''' Process exit codes:
+    ''' <list type="bullet">
+    ''' <item><description>0: The wallpaper was set successfully.</description></item>
+    ''' <item><description>1: Missing required arguments.</description></item>
+    ''' <item><description>2: Too many arguments.</description></item>
+    ''' <item><description>3: The image file was not found.</description></item>
+    ''' <item><description>4: Unsupported file extension.</description></item>
+    ''' <item><description>5: Invalid wallpaper style identifier.</description></item>
+    ''' <item><description>6: Unable to open the registry path.</description></item>
+    ''' <item><description>Other: An HRESULT or Win32 error code reported by the failing operation.</description></item>
+    ''' </list>
+    ''' 
+    ''' </remarks>
+    ''' <param name="args">
+    ''' The command-line arguments:
+    ''' <para></para>
+    ''' 1. The image file path (required).
+    ''' <para></para>
+    ''' 2. The wallpaper style, as a name or numeric ID (optional).
+    ''' </param>
     Public Sub Main(args As String())
 
         ' Validate arguments count.
@@ -88,7 +140,7 @@ Public Module Program
         Dim finalWallpaperPath As String = fullPath
 
         ' Perform a shadow copy if the path length exceeds Windows MAX_PATH.
-        If fullPath.Length >= Win32_Constants.MAX_PATH Then
+        If fullPath.Length >= Win32.Constants.MAX_PATH Then
 
             Dim tempDir As String = Path.GetTempPath()
             Try
@@ -112,28 +164,137 @@ Public Module Program
             End Try
         End If
 
-        ' Trigger system update to apply the wallpaper.
-        Dim lastWin32Error As Integer
-        Dim updateResult As Integer =
-            NativeMethods.SystemParametersInfo(Win32_Constants.SPI_SETDESKWALLPAPER, 0, finalWallpaperPath,
-                                               Win32_Constants.SPIF_UPDATEINIFILE Or Win32_Constants.SPIF_SENDCHANGE)
+        ' Attempt to update wallpaper via IDesktopWallpaper COM interface, falling back to User32 SystemParametersInfo if unavailable.
+        Try
+            Dim desktopWallpaper As IDesktopWallpaper = Program.TryCreateDesktopWallpaper()
+            If desktopWallpaper IsNot Nothing Then
+                Program.SetWallpaperViaIDesktopWallpaper(desktopWallpaper, finalWallpaperPath, config)
+            Else
+                Program.SetWallpaperViaSystemParametersInfo(finalWallpaperPath)
+            End If
 
-        lastWin32Error = Marshal.GetLastWin32Error()
+        Catch ex As COMException
+            Program.TerminateProcess(
+                $"ERROR: Interface '{NameOf(IDesktopWallpaper)}' has failed" & Environment.NewLine & Environment.NewLine &
+                $"HRESULT: 0x{ex.ErrorCode:X8}" & Environment.NewLine &
+                $"Message: {ex.Message}", ex.ErrorCode)
 
-        If updateResult = 0 Then
-            Dim win32Exception As New Win32Exception(lastWin32Error)
+        Catch ex As Win32Exception
+            Program.TerminateProcess(
+                $"ERROR: Function '{NameOf(Win32.NativeMethods.SystemParametersInfo)}' has failed" & Environment.NewLine & Environment.NewLine &
+                $"Win32 Error Code: {ex.NativeErrorCode}" & Environment.NewLine &
+                $"Message: {ex.Message}", ex.NativeErrorCode)
 
-            Dim errorMessage As String =
-                $"ERROR: Function '{NameOf(NativeMethods.SystemParametersInfo)}' has failed" & Environment.NewLine & Environment.NewLine &
-                $"Win32 Error Code: {lastWin32Error}" & Environment.NewLine &
-                $"Message: {win32Exception.Message}"
-
-            Program.TerminateProcess(errorMessage, lastWin32Error)
-        End If
+        End Try
 
         Environment.Exit(0)
     End Sub
 
+    ''' <summary>
+    ''' Tries to create the <see cref="IDesktopWallpaper"/> COM object.
+    ''' <para></para>
+    ''' Returns <see langword="Nothing"/> if the interface is not available (e.g. Windows 7 or older).
+    ''' </summary>
+    ''' 
+    ''' <returns>
+    ''' An <see cref="IDesktopWallpaper"/> instance, or <see langword="Nothing"/> if it is not available.
+    ''' </returns>
+    Private Function TryCreateDesktopWallpaper() As IDesktopWallpaper
+
+        Try
+            Return DirectCast(New CDesktopWallpaper(), IDesktopWallpaper)
+
+        Catch ex As Exception When TypeOf ex Is COMException OrElse TypeOf ex Is InvalidCastException
+            Return Nothing
+
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' Sets a wallpaper through the <see cref="IDesktopWallpaper"/> interface.
+    ''' <para></para>
+    ''' Throws <see cref="COMException"/> (HRESULT) on failure.
+    ''' </summary>
+    ''' 
+    ''' <remarks>
+    ''' This method takes ownership of <paramref name="desktopWallpaper"/>:
+    ''' it releases the COM object before returning, so the caller must not use it afterwards.
+    ''' </remarks>
+    ''' 
+    ''' <param name="desktopWallpaper">
+    ''' The <see cref="IDesktopWallpaper"/> instance to use.
+    ''' </param>
+    ''' 
+    ''' <param name="wallpaperPath">
+    ''' The full path of the image file to set as the wallpaper.
+    ''' </param>
+    ''' <param name="config">
+    ''' The wallpaper style to apply, or <see langword="Nothing"/> to keep the current system style.
+    ''' </param>
+    ''' 
+    ''' <exception cref="COMException">
+    ''' Thrown when <see cref="IDesktopWallpaper.SetPosition"/> or
+    ''' <see cref="IDesktopWallpaper.SetWallpaper"/> returns a failure HRESULT.
+    ''' </exception>
+    Private Sub SetWallpaperViaIDesktopWallpaper(desktopWallpaper As IDesktopWallpaper,
+                                                 wallpaperPath As String,
+                                                 config As WallpaperConfig)
+        Try
+            If config IsNot Nothing Then
+                Dim iDesktopWallpaperPosition As Integer = config.ToIDesktopWallpaperPosition()
+                desktopWallpaper.SetPosition(iDesktopWallpaperPosition)
+            End If
+
+            desktopWallpaper.SetWallpaper(Nothing, wallpaperPath)
+
+        Finally
+            Marshal.FinalReleaseComObject(desktopWallpaper)
+
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Sets a wallpaper through the <see cref="Win32.NativeMethods.SystemParametersInfo"/> function.
+    ''' <para></para>
+    ''' Throws <see cref="Win32Exception"/> (Win32 error code) on failure.
+    ''' </summary>
+    ''' 
+    ''' <remarks>
+    ''' This legacy method does not apply the wallpaper style by itself;
+    ''' the style is read by the system from the registry values written in <see cref="Main"/>.
+    ''' </remarks>
+    ''' 
+    ''' <param name="wallpaperPath">
+    ''' The full path of the image file to set as the wallpaper.
+    ''' </param>
+    ''' 
+    ''' <exception cref="Win32Exception">
+    ''' Thrown when <see cref="Win32.NativeMethods.SystemParametersInfo"/> fails.
+    ''' </exception>
+    Private Sub SetWallpaperViaSystemParametersInfo(wallpaperPath As String)
+
+        Dim success As Integer =
+            Win32.NativeMethods.SystemParametersInfo(Win32.Constants.SPI_SETDESKWALLPAPER, 0, wallpaperPath,
+                                                     Win32.Constants.SPIF_UPDATEINIFILE Or Win32.Constants.SPIF_SENDCHANGE)
+
+        Dim win32error As Integer = Marshal.GetLastWin32Error()
+
+        If success = 0 Then
+            Throw New Win32Exception(win32error)
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Shows the usage instructions, and terminates the process.
+    ''' </summary>
+    ''' 
+    ''' <param name="errorMessage">
+    ''' The error message to display above the usage instructions.
+    ''' </param>
+    ''' 
+    ''' <param name="exitcode">
+    ''' The process exit code.
+    ''' </param>
     Private Sub ShowUsage(errorMessage As String, exitcode As Integer)
 
         Dim exeName As String =
@@ -146,18 +307,19 @@ USAGE:
     {exeName} <ImagePath> <WallpaperStyle>
 
 EXAMPLES:
-    {exeName} ""C:\Wallpapers\image.jpg"" fill
+    {exeName} ""C:\Wallpapers\image.jpg"" default
     {exeName} ""C:\Wallpapers\image.jpg"" center
+    {exeName} ""C:\Wallpapers\image.jpg"" fill
     {exeName} ""C:\Wallpapers\image.jpg"" 10
     
-WallpaperStyle accepted values (Name or ID):
-     0  or  Center 
-     1  or  Tile
-     2  or  Stretch
-     6  or  Fit
-    10 or  Fill
-    22 or  Span
-    Or leave empty to use the system's default style.
+WallpaperStyle accepted values (ID or Name):
+     ""0"" or ""center""
+     ""1"" or ""tile""
+     ""2"" or ""stretch""
+     ""6"" or ""fit""
+    ""10"" or ""fill""
+    ""22"" or ""span""
+    ""default"" to use the system's current style.
 
 Supported file extensions:
      {String.Join(", ", Program.SupportedFileExtensions)}"
@@ -165,6 +327,17 @@ Supported file extensions:
         Program.TerminateProcess(usageMessage, exitcode)
     End Sub
 
+    ''' <summary>
+    ''' Shows an error message box and terminates the process with the specified exit code.
+    ''' </summary>
+    ''' 
+    ''' <param name="message">
+    ''' The error message to display.
+    ''' </param>
+    ''' 
+    ''' <param name="exitCode">
+    ''' The process exit code.
+    ''' </param>
     Private Sub TerminateProcess(message As String, exitCode As Integer)
 
         MessageBox.Show(Nothing, message, My.Application.Info.Title, MessageBoxButtons.OK, MessageBoxIcon.Error)

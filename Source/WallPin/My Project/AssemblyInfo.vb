@@ -13,7 +13,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Command-line tool to set an image file as the active desktop wallpaper.")>
 <Assembly: AssemblyCompany("ElektroStudios")>
 <Assembly: AssemblyProduct("WallPin")>
-<Assembly: AssemblyCopyright("ElektroStudios ©  2026")>
+<Assembly: AssemblyCopyright("ElektroStudios © 2026")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -29,6 +29,6 @@ Imports System.Runtime.InteropServices
 '      Revision
 '
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("1.1.0.0")>
+<Assembly: AssemblyFileVersion("1.1.0.0")>
 <Assembly: NeutralResourcesLanguage("en")>

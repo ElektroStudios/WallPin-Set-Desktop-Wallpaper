@@ -83,8 +83,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Win32\CDesktopWallpaper.vb" />
+    <Compile Include="Win32\IDesktopWallpaper.vb" />
     <Compile Include="Win32\NativeMethods.vb" />
-    <Compile Include="Win32\Win32_Constants.vb" />
+    <Compile Include="Win32\Constants.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -112,12 +114,36 @@
     <None Include="Shell Integration\Add new registry keys [spanish].bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Shell Integration\Icons\# source.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Shell Integration\Restore Windows default registry keys.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
+    <None Include="Shell Integration\Icons\center.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Shell Integration\Icons\default.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Shell Integration\Icons\fill.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Shell Integration\Icons\fit.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Shell Integration\Icons\span.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Shell Integration\Icons\stretch.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Shell Integration\Icons\tile.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Shell Integration\# README.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
