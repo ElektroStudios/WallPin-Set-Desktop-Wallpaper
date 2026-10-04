@@ -1,24 +1,22 @@
-@ECHO OFF
-SETLOCAL ENABLEDELAYEDEXPANSION
+@ECHO OFF 
 
-REM Script Version: 1.1.0
+REM Script Version: 1.1
+
+:: Prevent direct execution. Ensure language variables are defined by the caller.
+IF NOT DEFINED MenuName (
+    ECHO ERROR: Do not run this core script directly. 
+    ECHO Please execute 'Add registry keys [english].bat' or 'Add registry keys [spanish].bat' instead.
+    ECHO.
+    PAUSE
+    EXIT /B 1
+)
 
 :: --- CONFIGURATION ---
 SET "FileExtensions=.bmp, .gif, .heic, .heif, .jfif, .jpg, .jpeg, .png, .tif, .tiff"
-SET "MenuName=Establecer como &fondo de pantalla"
 SET "Position=Top"
 SET "Exe=%~dp0..\WallPin.exe"
 SET "Icon=%Exe%,0"
 SET "IconsDir=%~dp0Icons"
-
-:: Define sub-menu items using format "RegistryKeyName|MenuDisplayText|IconFile|Arguments"
-SET "Item0=0. Default|&Por defecto|default.ico|default"
-SET "Item1=1. Center|&Centrado|center.ico|center"
-SET "Item2=2. Tile|&Mosaico|tile.ico|tile"
-SET "Item3=3. Stretch|&Expandido|stretch.ico|stretch"
-SET "Item4=4. Fit|&Ajustar|fit.ico|fit"
-SET "Item5=5. Fill|&Rellenar|fill.ico|fill"
-SET "Item6=6. Span|E&xtender|span.ico|span"
 
 :: ---------------------
 
@@ -82,4 +80,4 @@ ECHO+
 ECHO DONE!
 ECHO+
 TIMEOUT /T 5
-EXIT
+EXIT /B 0

@@ -1,7 +1,7 @@
 @ECHO OFF
 SETLOCAL ENABLEDELAYEDEXPANSION
 
-REM Script Version: 1.1.0
+REM Script Version: 1.1
 
 SET "FileExtensions=.bmp, .gif, .heic, .heif, .jfif, .jpg, .jpeg, .png, .tif, .tiff"
 

@@ -19,7 +19,7 @@ Public Module Program
     ''' The file name prefix (without extension) of the temporary copy of the image
     ''' that is created when the original file path exceeds <see cref="Win32.Constants.MAX_PATH"/>.
     ''' </summary>
-    Private Const WALLPIN_TEMP_FILENAME_PREFIX As String = "wallpin_temp_longpath_wallpaper"
+    Private Const WALLPIN_TEMP_FILENAME_PREFIX As String = "wallpin_temp_wallpaper"
 
     ''' <summary>
     ''' The image file extensions supported by this tool (case-insensitive).
