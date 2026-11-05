@@ -47,6 +47,10 @@ Friend NotInheritable Class WallpaperConfig
     ''' </returns>
     Friend Function ToIDesktopWallpaperPosition() As Integer
 
+        If Me.WallpaperStyle = "0" AndAlso Me.TileWallpaper = "1" Then
+            Return 1 ' Tile
+        End If
+
         Select Case Me.WallpaperStyle
 
             Case "0"
