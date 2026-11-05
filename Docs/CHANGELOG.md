@@ -1,5 +1,8 @@
 ﻿# WallPin Change Log 📋
 
+## v1.2
+- Fix wallpaper style mapping (for tile)
+
 ## v1.1
 - Added a set of icons for the context menu sub-items.
 - Added support for `.heic`, `.heif` and `.jfif` image files.
