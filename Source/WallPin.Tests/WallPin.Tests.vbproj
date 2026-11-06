@@ -22,4 +22,10 @@
   <ItemGroup>
     <ProjectReference Include="..\WallPin\WallPin.vbproj" />
   </ItemGroup>
+
+  <!-- The Shell Integration scripts and icons are parsed (never executed) by ShellIntegrationContractTests. -->
+  <ItemGroup>
+    <Content Include="..\WallPin\Shell Integration\*.bat" Link="ShellIntegration\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\WallPin\Shell Integration\Icons\*.ico" Link="ShellIntegration\Icons\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>

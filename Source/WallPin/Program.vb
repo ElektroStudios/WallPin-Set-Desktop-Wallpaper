@@ -22,6 +22,16 @@ Public Module Program
     Private Const WALLPIN_TEMP_FILENAME_PREFIX As String = "wallpin_temp_wallpaper"
 
     ''' <summary>
+    ''' The name of the environment variable that enables the headless error reporting mode.
+    ''' <para></para>
+    ''' When this variable is set to "1", error messages are written to the standard error stream
+    ''' instead of being shown in a message box. The exit codes do not change.
+    ''' <para></para>
+    ''' Intended only for automated tests; end users never need to set it.
+    ''' </summary>
+    Private Const WALLPIN_HEADLESS_ENVIRONMENT_VARIABLE As String = "WALLPIN_HEADLESS"
+
+    ''' <summary>
     ''' The image file extensions supported by this tool (case-insensitive).
     ''' </summary>
     Private ReadOnly SupportedFileExtensions As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase) From {
@@ -329,19 +339,45 @@ Supported file extensions:
 
     ''' <summary>
     ''' Shows an error message box and terminates the process with the specified exit code.
+    ''' <para></para>
+    ''' In headless mode (see <see cref="WALLPIN_HEADLESS_ENVIRONMENT_VARIABLE"/>), the message is written
+    ''' to the standard error stream instead of being shown in a message box.
     ''' </summary>
-    ''' 
+    '''
     ''' <param name="message">
     ''' The error message to display.
     ''' </param>
-    ''' 
+    '''
     ''' <param name="exitCode">
     ''' The process exit code.
     ''' </param>
     Private Sub TerminateProcess(message As String, exitCode As Integer)
 
-        MessageBox.Show(Nothing, message, My.Application.Info.Title, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        If Program.IsHeadlessMode() Then
+            ' Explicit UTF-8 (without BOM), so file paths are not altered by the console code page.
+            Using standardError As New StreamWriter(Console.OpenStandardError(), New Text.UTF8Encoding(encoderShouldEmitUTF8Identifier:=False))
+                standardError.WriteLine(message)
+            End Using
+        Else
+            MessageBox.Show(Nothing, message, My.Application.Info.Title, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
         Environment.Exit(exitCode)
     End Sub
+
+    ''' <summary>
+    ''' Determines whether the headless error reporting mode is enabled, that is, whether the
+    ''' <see cref="WALLPIN_HEADLESS_ENVIRONMENT_VARIABLE"/> environment variable of the current process is exactly "1".
+    ''' </summary>
+    '''
+    ''' <returns>
+    ''' <see langword="True"/> if error messages must be written to the standard error stream;
+    ''' <see langword="False"/> if they must be shown in a message box.
+    ''' </returns>
+    Private Function IsHeadlessMode() As Boolean
+
+        Return String.Equals(Environment.GetEnvironmentVariable(Program.WALLPIN_HEADLESS_ENVIRONMENT_VARIABLE),
+                             "1", StringComparison.Ordinal)
+    End Function
 
 End Module

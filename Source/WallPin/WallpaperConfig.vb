@@ -9,7 +9,7 @@ Friend NotInheritable Class WallpaperConfig
     Friend ReadOnly WallpaperStyle As String
 
     ''' <summary>
-    ''' Gets the registry string value indicating whether the wallpaper is tiled ("0"=False, "1"=Tue).
+    ''' Gets the registry string value indicating whether the wallpaper is tiled ("0"=False, "1"=True).
     ''' </summary>
     Friend ReadOnly TileWallpaper As String
 
@@ -28,7 +28,7 @@ Friend NotInheritable Class WallpaperConfig
     ''' </param>
     ''' 
     ''' <param name="tile">
-    ''' The registry string value indicating whether the wallpaper is tiled ("0"=False, "1"=Tue).
+    ''' The registry string value indicating whether the wallpaper is tiled ("0"=False, "1"=True).
     ''' </param>
     Friend Sub New(style As String,
                    tile As String)

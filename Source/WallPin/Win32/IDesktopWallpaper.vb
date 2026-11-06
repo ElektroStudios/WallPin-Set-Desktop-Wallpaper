@@ -413,7 +413,7 @@ Namespace Win32
         ''' An <c>HRESULT</c>. <c>S_OK</c> (0) on success.
         ''' </returns>
         <PreserveSig>
-        Function Enable(enabled As Boolean) As Integer
+        Function Enable(<MarshalAs(UnmanagedType.Bool)> enabled As Boolean) As Integer
 
     End Interface
 
